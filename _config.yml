@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://shenghui.github.com
+title: Shenghui's Blog
+subtitle: 追求梦想 追求简单
+author: Shenghui
 simple_search: http://google.com/search
 description:
 
@@ -91,7 +91,6 @@ delicious_count: 3
 # Disqus Comments
 disqus_short_name:
 disqus_show_comment_count: false
-
 # Google Analytics
 google_analytics_tracking_id:
 
