@@ -4,7 +4,7 @@
   <title><![CDATA[Shenghui's Blog]]></title>
   <link href="http://shenghui.github.com/atom.xml" rel="self"/>
   <link href="http://shenghui.github.com/"/>
-  <updated>2013-02-24T14:54:51+08:00</updated>
+  <updated>2013-02-24T15:54:43+08:00</updated>
   <id>http://shenghui.github.com/</id>
   <author>
     <name><![CDATA[Shenghui]]></name>
@@ -18,7 +18,7 @@
     <link href="http://shenghui.github.com/blog/2013/02/24/first-blog/"/>
     <updated>2013-02-24T14:04:00+08:00</updated>
     <id>http://shenghui.github.com/blog/2013/02/24/first-blog</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<p>  今天用Octopress在Github上搭建了一个Blog，准备把CSDN上的文章迁移过去。参考了Octopress的官方说明，过程比较简单。</p>
 ]]></content>
   </entry>
   
