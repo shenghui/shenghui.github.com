@@ -9,8 +9,7 @@
   <meta name="author" content="Shenghui">
 
   
-  <meta name="description" content=" 今天用Octopress在Github上搭建了一个Blog，准备把CSDN上的文章迁移过去。参考了Octopress的官方说明，过程比较简单。
-">
+  <meta name="description" content="Github的Pages功能支持上传html，并且在页面中显示。于是有人做了一个基于Github的博客管理工具：Octopress，基本原理是用git来管理你的文章，然后最终发布到Github上成为一个独立博客站点。 今天用Octopress在Github上搭建了一个Blog， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +70,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/02/24/first-blog/">First Blog</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/02/24/first-blog/">在Github创建本站</a></h1>
     
     
       <p class="meta">
@@ -94,7 +93,112 @@
   </header>
 
 
-  <div class="entry-content"><p>  今天用Octopress在Github上搭建了一个Blog，准备把CSDN上的文章迁移过去。参考了Octopress的官方说明，过程比较简单。</p>
+  <div class="entry-content"><p> Github的<a href="https://pages.github.com/">Pages</a>功能支持上传html，并且在页面中显示。于是有人做了一个基于Github的博客管理工具：<a href="http://octopress.org/">Octopress</a>，基本原理是用git来管理你的文章，然后最终发布到Github上成为一个独立博客站点。<br/>
+ 今天用Octopress在Github上搭建了一个Blog，主要参考了Octopress的官方说明，过程比较简单，记录一下。</p>
+
+<h2>准备工作</h2>
+
+<ol>
+<li><a href="http://git-scm.com/">安装Git</a>，注意不同的操作系统安装方法不同。</li>
+<li>安装Ruby版本管理工具<a href="https://rvm.io/">RVM</a>。联网的情况下执行一条命令就OK了。  <br/>
+<em>$ \curl -L https://get.rvm.io | bash -s stable &#8211;ruby</em></li>
+<li>Mac自带的Ruby版本一般比较旧。直接用RVM安装1.9.3就行了。<br/>
+ 查看版本 <em>ruby &#8211;version</em><br/>
+ 安装 <em>rvm install 1.9.3</em></li>
+</ol>
+
+
+<h2>安装Octopress</h2>
+
+<pre><code>git clone git://github.com/imathis/octopress.git octopress  
+cd octopress    # If you use RVM, You'll be asked if you trust the .rvmrc file (say yes).
+ruby --version  # Should report Ruby 1.9.3
+</code></pre>
+
+<p>安装依赖</p>
+
+<pre><code>gem install bundler
+bundle install  
+</code></pre>
+
+<p>安装</p>
+
+<pre><code>rake install  
+</code></pre>
+
+<h2>部署到Github Pages</h2>
+
+<p>注册一个<a href="https://github.com">Github</a>账号。然后新建一个代码库，名字就用你想要被访问的URL，例如我的<a href="http://shenghui.github.com">http://shenghui.github.com</a>，那么代码库的名字就是<strong>shenghui.github.com</strong>。如果有独立域名，就参考<a href="http://octopress.org/docs/deploying/github/#custom_domains">这里</a>设置。
+然后依次执行</p>
+
+<pre><code>rake setup_github_pages
+rake generate
+rake deploy
+</code></pre>
+
+<p>这样Blog就部署到你刚刚新建的仓库里面了。
+为了让你的博客源码也被Github管理起来，依次执行下面的命令</p>
+
+<pre><code>git add .
+git commit -m 'your message'
+git push origin source
+</code></pre>
+
+<h2>配置博客参数</h2>
+
+<p>主要的参数都在_config.yml中
+主要参数如下</p>
+
+<pre><code>url:                # For rewriting urls for RSS, etc
+title:              # 博客标题
+subtitle:           # 博客副标题
+author:             # 名字 显示在RSS, Copyright, Metadata
+simple_search:      # 检索
+description:        # 描述
+date_format:        # 日期格式
+subscribe_rss:      # Url for your blog's feed, defauts to /atom.xml
+subscribe_email:    # Url to subscribe by email (service required)
+category_feeds:     # Enable per category RSS feeds (defaults to false in 2.1)
+email:              # Email address for the RSS feed if you want it.
+</code></pre>
+
+<p>详细的配置项看<a href="https://github.com/mojombo/jekyll/wiki/Configuration">这里</a></p>
+
+<h2>开始写博客</h2>
+
+<p>博客的存储位置在source/_posts里面，文件格式是YYYY-MM-DD-post-title.markdown</p>
+
+<h4>新文章</h4>
+
+<pre><code>rake new_post["title"]
+</code></pre>
+
+<p>找到_posts目录下的文件，编辑，保存。</p>
+
+<h4>新页面</h4>
+
+<pre><code>rake new_page[super-awesome]
+
+rake new_page[super-awesome/page.html]
+</code></pre>
+
+<h4>生成预览</h4>
+
+<pre><code>rake generate  
+rake watch    
+rake preview
+</code></pre>
+
+<p>预览地址http://localhost:4000</p>
+
+<h4>发布</h4>
+
+<pre><code>rake deploy
+</code></pre>
+
+<h2>后记</h2>
+
+<p>文章的编辑完全采用<a href="http://markdown.tw">Markdown</a>语法。这个东西的详细介绍看<a href="http://en.wikipedia.org/wiki/Markdown">这里</a>，我还在学习中。值得一提的是国内<a href="http://www.ituring.com.cn">图灵社区</a>发表文章也支持Markdown。</p>
 </div>
   
   
@@ -115,7 +219,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/02/24/first-blog/">first blog</a>
+        <a href="/blog/2013/02/24/first-blog/">在Github创建本站</a>
       </li>
     
   </ul>
